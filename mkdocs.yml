@@ -1,0 +1,28 @@
+site_name: ScmExplained
+
+docs_dir: "docs/"
+use_directory_urls: true
+
+theme:
+  name: material
+  favicon: assets/images/logo.png
+  logo: assets/images/logo.png
+  language: es
+  palette:
+    accent: amber
+    primary: deep orange
+    scheme: default
+  features:
+    - content.code.copy
+    - navigation.tabs
+
+nav:
+  - Home: index.md
+  - Git:
+    - git/Git.md
+    - git/Introduccion a Git.md
+    - git/Comandos Basicos de Git.md
+    - git/Revirtiendo Cambios Git.md
+    - git/Repositorios Remotos Git.md
+    - git/Ramas Git.md
+    - git/Commits Avanzados Git.md
