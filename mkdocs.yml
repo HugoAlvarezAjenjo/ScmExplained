@@ -20,7 +20,7 @@ nav:
   - Home: index.md
   - Git:
     - git/Git.md
-    - git/Introduccion a Git.md
+    - git/Configuracion de Git.md
     - git/Comandos Basicos de Git.md
     - git/Revirtiendo Cambios Git.md
     - git/Repositorios Remotos Git.md
