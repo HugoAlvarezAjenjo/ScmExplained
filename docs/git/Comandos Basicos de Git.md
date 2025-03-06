@@ -53,10 +53,12 @@ Este `-a` viene de decir quiero comitear todo, hay gente que se salta el `git ad
 git commit index.html -m "Mensaje del commit"
 ```
 
+Advertencia: Si un archivo no está siendo rastreado (por ejemplo, recién creado), git commit -a no lo incluirá, por lo que es importante usar git add para rastrear esos archivos nuevos.
+
 Y simplemente utilizan el git add para indicar que el repo rastre los archivos recien creados:
 
 ```bash
-git add -A # A mayuscula los archivos que todavia no se estan rastreando
+git add -A # A mayuscula los archivos que todavia no se estan rastreando, eliminados, modificados... Todos los archivos presentes
 ```
 
 Personalmente prefiero usar git add por coherencia.
@@ -128,6 +130,14 @@ git push --force
 
 Pero ten en cuenta que hacer esto reescribirá la historia del repositorio, lo que podría causar problemas si otros colaboradores ya han basado su trabajo en el commit anterior.
 
+Una alternativa más segura es:
+
+```bash
+git push --force-with-lease
+```
+
+Esto es más seguro ya que comprueba si el repositorio ha cambiado, si lo ha hecho el comando falla.
+
 ## Commits Temporales
 
 Git stash es una herramienta útil en Git que te permite guardar temporalmente cambios que aún no deseas comprometer o deseas apartar temporalmente del área de trabajo.
@@ -176,4 +186,5 @@ A partir de git 2.13 se puede nombrar a los stages (Probablemente tengas ya una 
 git stash push -m "Nombre descriptivo para el stash"
 ```
 
-Por lo que podras utilizar este nombre como el identificador en los `apply` y `drop`
+Por lo que podras utilizar este nombre como el identificador en los `apply` y `drop`.
+

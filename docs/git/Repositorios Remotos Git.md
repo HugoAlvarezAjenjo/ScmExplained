@@ -34,13 +34,14 @@ git remote remove origin
 
 ## Trabajando Con repositorios
 
-Ya teniendo el repositorio en tu máquina local si ejecutas `git fetch` mira si hay cambios del repositorio remoto comparado con tu repositorio local. En el caso de que haya cambios, puedes ejecutar:
+Ya teniendo el repositorio en tu máquina local si ejecutas `git fetch` mira si hay cambios del repositorio remoto comparado con tu repositorio local (solo descarga los cambios del remoto, pero no los fusiona con tu rama local. Para fusionarlos, debes ejecutar git merge o git pull.). En el caso de que haya cambios, puedes ejecutar:
 
 ```bash
 git pull 
 ```
 
 Esto hace pull al repo que tengas por defecto en upstream, sin tocar nada lo tendras en origin, si quieres otro a continuacion del pull pon el nombre del remoto que quieres.
+Git pull es una combinación de git fetch y git merge, lo cual implica que al hacer un pull se traen los cambios y se intentan fusionar con la rama local automáticamente.
 
 En este momento, puedes empezar a trabajar como en local y hacer los commits necesarios. Una vez ya terminado tienes que llevar los cambios al repositorio remoto:
 
@@ -65,6 +66,33 @@ git push -u origin main
 ---
 
 >Siempre tienes que hacer pull antes de push, si no, el remoto lo rechaza. Si estas trabajando de forma colaborativa y tienes que hacer pull a un cambio, puede provocar un merge conflict.
+
+## Pull Rebase
+
+Si se da este caso de que alguien ha colaborado a la misma rama y ha enviado cambios antes que tú. No hagas pull directamente, esto dejará los dos commits y los juntará mediante un nuevo commit de merge. Esto hace muy dificil revisar el repositorio en caso de tener que buscar un error.
+
+Para solucionar esto, puedes hacer un pull rebase:
+
+```bash
+git pull --rebase
+```
+
+Esto lo que hace es quitar tu commit del historial, hacer pull del contenido y posteriormente volver a agregar tu commit a HEAD.
+
+El rebase solo funcionará sin conflictos si los cambios en el remoto no afectan las mismas líneas de código que tus cambios. Si hay conflictos, debes resolverlos manualmente como si fuera un merge conflict.
+
+```bash
+git rebase --abort
+git pull
+```
+
+O tambien puedes corregir el rebase y hacer:
+
+```bash
+git rebase --continue
+```
+
+Otra alternativa es hacer fetch y merge.
 
 ## Merge Conflict
 
@@ -98,3 +126,4 @@ git merge --continue
 ```
 
 Los editores modernos y clientes de git como Code, IntelliJ o Gitkracken te ayuda a hacer esto de modo visual con una GUI pero esta es la forma que se haría desde consola.
+

@@ -2,7 +2,7 @@
 
 Un **Sistema de Control de Versiones** (*Source Control Management* o SCM, por sus siglas en inglés) es una herramienta que permite gestionar los cambios en el código fuente de un proyecto a lo largo del tiempo. 
 
-Permite ver todas las modificaciones realizadas en el código. Facilita la colaboraci´
+Permite ver todas las modificaciones realizadas en el código. Facilita la colaboración entre los desarrolladores.
 
 ## Beneficios de un SCM
 
